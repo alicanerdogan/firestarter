@@ -1,0 +1,15 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "useBuiltIns": "entry",
+        "targets": {
+          "browsers": ["last 2 Firefox versions", "last 2 Chrome versions"]
+        }
+      }
+    ]
+  ],
+  "plugins": ["emotion", "@babel/plugin-syntax-dynamic-import"]
+}
