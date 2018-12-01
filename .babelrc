@@ -11,5 +11,9 @@
       }
     ]
   ],
-  "plugins": ["emotion", "@babel/plugin-syntax-dynamic-import"]
+  "plugins": [
+    "emotion",
+    "@babel/plugin-syntax-dynamic-import",
+    "react-hot-loader/babel"
+  ]
 }

@@ -4,10 +4,12 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 const API_HOSTNAME = "http://localhost:3000";
 
+const isProduction = process.argv.includes("--mode=production");
+
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    filename: "[name].[contenthash].js",
+    filename: isProduction ? "[name].[contenthash].js" : "[name].[hash].js",
     path: __dirname + "/dist",
     publicPath: "/"
   },
@@ -17,6 +19,7 @@ module.exports = {
     contentBase: "./dist",
     compress: true,
     historyApiFallback: true,
+    overlay: true,
     proxy: {
       "/api": {
         target: API_HOSTNAME
@@ -68,7 +71,7 @@ module.exports = {
     })
   ],
   optimization: {
-    minimizer: process.argv.mode === "production" ? [new TerserPlugin()] : [],
+    minimizer: isProduction ? [new TerserPlugin()] : [],
     splitChunks: {
       minChunks: 2,
       cacheGroups: {

@@ -7,7 +7,17 @@
     "moduleResolution": "node",
     "target": "es2015",
     "jsx": "react",
-    "lib": ["es2015", "dom"]
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ],
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*"
+  ]
 }
