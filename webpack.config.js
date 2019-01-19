@@ -7,7 +7,7 @@ const API_HOSTNAME = "http://localhost:3000";
 const isProduction = process.argv.includes("--mode=production");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./src/index.js",
   output: {
     filename: isProduction ? "[name].[contenthash].js" : "[name].[hash].js",
     path: __dirname + "/dist",
@@ -27,7 +27,7 @@ module.exports = {
     }
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".js", ".jsx", ".json"]
   },
   module: {
     rules: [
@@ -58,8 +58,8 @@ module.exports = {
         }
       },
       {
-        test: /\.tsx?$/,
-        loaders: ["babel-loader", "awesome-typescript-loader"]
+        test: /\.jsx?$/,
+        loaders: ["babel-loader"]
       },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
     ]

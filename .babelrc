@@ -9,10 +9,13 @@
           "browsers": ["last 2 Firefox versions", "last 2 Chrome versions"]
         }
       }
-    ]
+    ],
+    "@babel/preset-react"
   ],
   "plugins": [
     "emotion",
+    "@babel/plugin-syntax-object-rest-spread",
+    "@babel/plugin-proposal-class-properties",
     "@babel/plugin-syntax-dynamic-import",
     "react-hot-loader/babel"
   ]
