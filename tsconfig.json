@@ -1,23 +1,32 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "esNext",
-    "moduleResolution": "node",
-    "target": "es2015",
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
     "jsx": "react",
-    "lib": [
-      "es2015",
-      "dom"
-    ],
-    "types": [
-      "node"
-    ],
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "pretty": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
     "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "ES2015",
+    "module": "esnext",
+    "allowJs": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "baseUrl": "src",
+    "outDir": "./dist/",
     "strictPropertyInitialization": true
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

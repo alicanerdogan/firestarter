@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const API_HOSTNAME = "http://localhost:3000";
 
@@ -13,13 +14,15 @@ module.exports = {
     path: __dirname + "/dist",
     publicPath: "/"
   },
-  devtool: "source-map",
+  devtool: "cheap-module-source-map",
   devServer: {
     host: "0.0.0.0",
     contentBase: "./dist",
     compress: true,
     historyApiFallback: true,
     overlay: true,
+    hot: true,
+    clientLogLevel: "none",
     proxy: {
       "/api": {
         target: API_HOSTNAME
@@ -59,15 +62,32 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loaders: ["babel-loader", "awesome-typescript-loader"]
+        exclude: /node_modules/,
+        loader: "babel-loader"
       },
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            cacheDirectory: true
+          }
+        }
+      }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "ReactivePod",
+      title: "Firestarter",
       template: "./src/index.html"
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig: path.resolve(__dirname, "tsconfig.json"),
+      useTypescriptIncrementalApi: true,
+      checkSyntacticErrors: true,
+      // Required to be async to force compilation to fail due to type checks
+      async: false
     })
   ],
   optimization: {
