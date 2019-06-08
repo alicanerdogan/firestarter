@@ -4,7 +4,7 @@
     "allowUnreachableCode": false,
     "downlevelIteration": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "importHelpers": true,
     "jsx": "react",
     "moduleResolution": "node",
@@ -23,10 +23,10 @@
     "module": "esnext",
     "allowJs": true,
     "noEmit": true,
-    "isolatedModules": true,
     "baseUrl": "src",
     "outDir": "./dist/",
-    "strictPropertyInitialization": true
+    "strictPropertyInitialization": true,
+    "rootDir": "src"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
