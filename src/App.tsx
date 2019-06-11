@@ -4,7 +4,11 @@ import { Hello } from "./components/Hello";
 import { GlobalStyles } from "./utils/styles";
 
 const App: React.SFC<{}> = (props: {}) => {
-  return <GlobalStyles><Hello compiler="TypeScript" framework="React" /></GlobalStyles>;
+  return (
+    <GlobalStyles>
+      <Hello compiler="TypeScript" framework="React" />
+    </GlobalStyles>
+  );
 };
 
 export default hot(module)(App);

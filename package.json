@@ -50,7 +50,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode=development --hot",
     "build": "webpack --mode=production",
-    "format": "prettier --write src/**/*.ts*",
+    "format": "prettier --write src/**/*.{ts,tsx,js,jsx,json}",
+    "format-check": "prettier -c src/**/*.{ts,tsx,js,jsx,json}",
     "lint": "tslint -c tslint.json 'src/**/*.ts*'",
     "type-check": "tsc --noEmit",
     "generate": "plop --plopfile blueprints/plopfile.js"
