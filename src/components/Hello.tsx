@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 
-export interface IHelloProps {
+export interface HelloProps {
   compiler: string;
   framework: string;
 }
@@ -12,7 +12,7 @@ const Header = styled.h1`
 
 // 'HelloProps' describes the shape of props.
 // State is never set so we use the '{}' type.
-export class Hello extends React.Component<IHelloProps, {}> {
+export class Hello extends React.Component<HelloProps, {}> {
   render() {
     return (
       <Header>

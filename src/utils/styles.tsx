@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Global, css } from "@emotion/core";
+import { Global, css, Interpolation } from "@emotion/core";
 
 // USE DESIRED FONT
 const globalStyles = css`
@@ -61,30 +61,32 @@ export const GlobalStyles: React.SFC<{
   );
 };
 
+type CSSArgs = [TemplateStringsArray, ...Interpolation[]];
+
 export const media = {
-  sm: (...args: any[]) => css`
+  sm: (...args: CSSArgs) => css`
     @media (max-width: 576px) {
       ${css(...args)};
     }
   `,
-  md: (...args: any[]) => css`
+  md: (...args: CSSArgs) => css`
     @media (max-width: 768px) {
       ${css(...args)};
     }
   `,
-  lg: (...args: any[]) => css`
+  lg: (...args: CSSArgs) => css`
     @media (max-width: 992px) {
       ${css(...args)};
     }
   `,
-  xl: (...args: any[]) => css`
+  xl: (...args: CSSArgs) => css`
     @media (max-width: 1200px) {
       ${css(...args)};
     }
   `
 };
 
-export const whereHoverAvailable = (...args: any[]) => css`
+export const whereHoverAvailable = (...args: CSSArgs) => css`
   @media (hover: none) {
     ${css(...args)};
   }

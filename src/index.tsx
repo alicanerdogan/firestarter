@@ -1,14 +1,10 @@
-import "@babel/polyfill";
-
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-const lazy = (React as any).lazy;
-const Suspense = (React as any).Suspense;
-const App = lazy(() => import(/* webpackChunkName: 'App' */ "./App"));
+const App = React.lazy(() => import(/* webpackChunkName: 'App' */ "./App"));
 
 ReactDOM.render(
-  <Suspense fallback={<div>Loading...</div>}>
+  <React.Suspense fallback={<div>Loading...</div>}>
     <App />
-  </Suspense>,
+  </React.Suspense>,
   document.getElementById("root")
 );

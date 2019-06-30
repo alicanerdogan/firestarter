@@ -3,7 +3,7 @@ import { hot } from "react-hot-loader";
 import { Hello } from "./components/Hello";
 import { GlobalStyles } from "./utils/styles";
 
-const App: React.SFC<{}> = (props: {}) => {
+const App: React.SFC<{}> = () => {
   return (
     <GlobalStyles>
       <Hello compiler="TypeScript" framework="React" />
