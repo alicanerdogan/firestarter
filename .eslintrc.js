@@ -30,8 +30,9 @@ module.exports = {
     }
   },
   rules: {
+    "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "error"
   },
   overrides: [
     {
@@ -39,7 +40,10 @@ module.exports = {
       parser: "@typescript-eslint/parser",
       rules: {
         "@typescript-eslint/explicit-member-accessibility": "off",
-        "@typescript-eslint/explicit-function-return-type": "off"
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-explicit-any": "off"
       }
     }
   ]
