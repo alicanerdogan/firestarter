@@ -29,7 +29,11 @@ module.exports = {
       }
     }
   },
+  watchOptions: {
+    ignored: /node_modules/
+  },
   resolve: {
+    modules: ["node_modules", path.resolve(__dirname, "src")],
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
   module: {
