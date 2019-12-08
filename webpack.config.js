@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 const API_HOSTNAME = "http://localhost:3000";
 
@@ -92,7 +93,8 @@ module.exports = {
       checkSyntacticErrors: true,
       // Required to be async to force compilation to fail due to type checks
       async: false
-    })
+    }),
+    new ReactRefreshWebpackPlugin({ disableRefreshCheck: true })
   ],
   optimization: {
     minimizer: isProduction ? [new TerserPlugin()] : [],

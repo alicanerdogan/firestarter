@@ -3,8 +3,6 @@ import { Global, css, Interpolation } from "@emotion/core";
 
 // USE DESIRED FONT
 const globalStyles = css`
-  @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&subset=latin-ext");
-
   * {
     box-sizing: border-box;
 

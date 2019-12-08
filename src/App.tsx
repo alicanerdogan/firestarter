@@ -1,5 +1,4 @@
 import * as React from "react";
-import { hot } from "react-hot-loader";
 import { Hello } from "./components/Hello";
 import { GlobalStyles } from "./utils/styles";
 
@@ -11,4 +10,4 @@ const App: React.SFC<{}> = () => {
   );
 };
 
-export default hot(module)(App);
+export default App;
