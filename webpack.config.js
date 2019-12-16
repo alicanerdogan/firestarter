@@ -28,7 +28,8 @@ module.exports = {
       "/api": {
         target: API_HOSTNAME
       }
-    }
+    },
+    stats: 'minimal'
   },
   watchOptions: {
     ignored: /node_modules/
