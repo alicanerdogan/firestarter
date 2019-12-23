@@ -6199,9 +6199,9 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   integrity sha512-INBT1QEgtcCCgvccr5/86CfD71fw9EPmDxgiJX4I2Ddr6ZsV6iFXsuby+qWJPtmNuMY0zByTsG4468P7nHuNWA==
 
 react-refresh@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.7.0.tgz#56d3a85aaef8bf0c009daac08422ed020b3f83c6"
-  integrity sha512-hFuels7qQPe8blzqocqAmiGFW1Z1sNEvE67D58egf2Mlzemgrv5zC4cnl9bO8ohWC8Q5pr1Q0iZemcFwzAuhbQ==
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.7.1.tgz#b9605e4cd0e5366b9cc21705ebe6ee5bda8ccf85"
+  integrity sha512-tFM1EmOxub/hMKtXilOslJTEt7ANDMwtjD8psJAFSe1oQl7anmGEQONxSR+hAYePgHGI1eVhRVdprBruXu3wfw==
 
 react-router-dom@^5.1.2:
   version "5.1.2"
