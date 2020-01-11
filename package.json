@@ -23,7 +23,7 @@
     "@typescript-eslint/parser": "^2.15.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "babel-plugin-emotion": "^10.0.27",
+    "css-loader": "^3.4.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-react": "^7.17.0",
@@ -31,6 +31,7 @@
     "file-loader": "^5.0.2",
     "fork-ts-checker-webpack-plugin": "^3.1.1",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "plop": "^2.5.3",
     "prettier": "^1.19.1",
     "react-refresh": "^0.7.1",
@@ -42,8 +43,7 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.27",
-    "@emotion/styled": "^10.0.27",
+    "linaria": "1.4.0-beta.0",
     "core-js": "3.6.3",
     "lodash-es": "^4.17.15",
     "react": "^16.12.0",

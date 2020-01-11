@@ -12,10 +12,10 @@
       }
     ],
     "@babel/preset-react",
-    "@babel/preset-typescript"
+    "@babel/preset-typescript",
+    "linaria/babel"
   ],
   "plugins": [
-    "emotion",
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-syntax-object-rest-spread",
     "@babel/plugin-proposal-class-properties"

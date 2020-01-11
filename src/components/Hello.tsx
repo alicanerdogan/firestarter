@@ -1,5 +1,6 @@
 import * as React from "react";
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
+import { media } from "utils/styleHelpers";
 
 export interface HelloProps {
   compiler: string;
@@ -8,6 +9,18 @@ export interface HelloProps {
 
 const Header = styled.h1`
   font-size: 24px;
+  ${media.sm`
+    font-size: 12px;
+  `}
+  ${media.md`
+    font-size: 16px;
+  `}
+  ${media.lg`
+    font-size: 20px;
+  `}
+  ${media.xl`
+    font-size: 48px;
+  `}
 `;
 
 // 'HelloProps' describes the shape of props.

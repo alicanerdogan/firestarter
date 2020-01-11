@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const API_HOSTNAME = "http://localhost:3000";
 
@@ -29,7 +30,7 @@ module.exports = {
         target: API_HOSTNAME
       }
     },
-    stats: 'minimal'
+    stats: "minimal"
   },
   watchOptions: {
     ignored: /node_modules/
@@ -69,7 +70,15 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        use: [
+          { loader: "babel-loader" },
+          {
+            loader: "linaria/loader",
+            options: {
+              sourceMap: isProduction
+            }
+          }
+        ]
       },
       {
         test: /\.jsx?$/,
@@ -80,6 +89,23 @@ module.exports = {
             cacheDirectory: true
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isProduction
+            }
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: isProduction
+            }
+          }
+        ]
       }
     ]
   },
@@ -95,7 +121,10 @@ module.exports = {
       // Required to be async to force compilation to fail due to type checks
       async: false
     }),
-    new ReactRefreshWebpackPlugin({ disableRefreshCheck: true })
+    new ReactRefreshWebpackPlugin({ disableRefreshCheck: true }),
+    new MiniCssExtractPlugin({
+      filename: isProduction ? "styles-[contenthash].css" : "styles.css"
+    })
   ],
   optimization: {
     minimizer: isProduction ? [new TerserPlugin()] : [],

@@ -1,91 +1,57 @@
 import * as React from "react";
-import { Global, css, Interpolation } from "@emotion/core";
+import { css } from "linaria";
 
 // USE DESIRED FONT
-const globalStyles = css`
-  * {
-    box-sizing: border-box;
+export const globalStyles = css`
+  :global() {
+    * {
+      box-sizing: border-box;
 
-    user-select: none;
-    outline: none;
-
-    &:focus {
+      user-select: none;
       outline: none;
-      box-shadow: none;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+
+      -webkit-tap-highlight-color: transparent;
     }
 
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    html {
+      max-height: 100%;
+    }
 
-    -webkit-tap-highlight-color: transparent;
-  }
+    body {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: left;
+      margin: 0;
+    }
 
-  html {
-    max-height: 100%;
-  }
+    button {
+      font-family: "Roboto Condensed", sans-serif;
+    }
 
-  body {
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    text-align: left;
-    margin: 0;
-  }
-
-  button {
-    font-family: "Roboto Condensed", sans-serif;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    margin: 0;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin: 0;
+    }
   }
 `;
 
-export const GlobalStyles: React.SFC<{
-  children: React.ReactNode;
-}> = (props: { children: React.ReactNode }) => {
-  return (
-    <React.Fragment>
-      <Global styles={globalStyles} />
-      {props.children}
-    </React.Fragment>
-  );
+export const GlobalStyles: React.FC<{
+  children: React.ReactElement;
+}> = (props: { children: React.ReactElement }) => {
+  return props.children;
 };
-
-type CSSArgs = [TemplateStringsArray, ...Interpolation[]];
-
-export const media = {
-  sm: (...args: CSSArgs) => css`
-    @media (max-width: 576px) {
-      ${css(...args)};
-    }
-  `,
-  md: (...args: CSSArgs) => css`
-    @media (max-width: 768px) {
-      ${css(...args)};
-    }
-  `,
-  lg: (...args: CSSArgs) => css`
-    @media (max-width: 992px) {
-      ${css(...args)};
-    }
-  `,
-  xl: (...args: CSSArgs) => css`
-    @media (max-width: 1200px) {
-      ${css(...args)};
-    }
-  `
-};
-
-export const whereHoverAvailable = (...args: CSSArgs) => css`
-  @media (hover: none) {
-    ${css(...args)};
-  }
-`;
