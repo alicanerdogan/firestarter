@@ -1,22 +1,27 @@
 import * as React from "react";
-import styled from "styled-components";
+import { twStyled } from "utils/styles";
+import {
+  text_3xl,
+  text_center,
+  text_blue_500,
+  italic,
+  text_red_500
+} from "tailwind-in-js";
 
 export interface HelloProps {
   compiler: string;
   framework: string;
 }
 
-const Header = styled.h1`
-  font-size: 24px;
-`;
+const Header = twStyled.h1(text_3xl, text_center, text_blue_500);
+const Compiler = twStyled.span(italic, text_red_500);
 
-// 'HelloProps' describes the shape of props.
-// State is never set so we use the '{}' type.
 export class Hello extends React.Component<HelloProps, {}> {
   render() {
     return (
       <Header>
-        Hello from {this.props.compiler} and {this.props.framework}!
+        Hello from <Compiler>{this.props.compiler}</Compiler> and{" "}
+        {this.props.framework}!
       </Header>
     );
   }

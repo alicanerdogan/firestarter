@@ -7122,6 +7122,11 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
+tailwind-in-js@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/tailwind-in-js/-/tailwind-in-js-0.2.1.tgz#28f52a0400482507ae3905deb66c87cd120a7a33"
+  integrity sha512-bmsL30dcVhpRx5mURELMEt28TkfUKa3DgM2vFE8tVpT5UooNyKpscxZAZiu0kQXk5gqRUlcZLTDaf3P7cFo7sw==
+
 tapable@^1.0.0, tapable@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.3.tgz#a1fccc06b58db61fd7a45da2da44f5f3a3e67ba2"

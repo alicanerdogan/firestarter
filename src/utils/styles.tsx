@@ -1,19 +1,15 @@
 import * as React from "react";
-import { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
+import { extendStyled, extendCss, getGlobalStyles } from "tailwind-in-js";
+
+export const twStyled = extendStyled(styled);
+export const twCss = extendCss(css);
 
 // USE DESIRED FONT
 const Global = createGlobalStyle`
+  ${getGlobalStyles()}
+ 
   * {
-    box-sizing: border-box;
-
-    user-select: none;
-    outline: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: none;
-    }
-
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -25,26 +21,8 @@ const Global = createGlobalStyle`
     max-height: 100%;
   }
 
-  body {
+  * {
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    text-align: left;
-    margin: 0;
-  }
-
-  button {
-    font-family: "Roboto Condensed", sans-serif;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    margin: 0;
   }
 `;
 
