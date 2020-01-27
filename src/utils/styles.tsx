@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Global, css, Interpolation } from "@emotion/core";
+import { createGlobalStyle, css } from "styled-components";
 
 // USE DESIRED FONT
-const globalStyles = css`
+const Global = createGlobalStyle`
   * {
     box-sizing: border-box;
 
@@ -53,13 +53,13 @@ export const GlobalStyles: React.SFC<{
 }> = (props: { children: React.ReactNode }) => {
   return (
     <React.Fragment>
-      <Global styles={globalStyles} />
+      <Global />
       {props.children}
     </React.Fragment>
   );
 };
 
-type CSSArgs = [TemplateStringsArray, ...Interpolation[]];
+type CSSArgs = Parameters<typeof css>;
 
 export const media = {
   sm: (...args: CSSArgs) => css`

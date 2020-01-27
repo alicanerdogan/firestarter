@@ -15,14 +15,17 @@
     "@babel/preset-typescript"
   ],
   "plugins": [
-    "emotion",
+    ["babel-plugin-styled-components", { "pure": true }],
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-syntax-object-rest-spread",
     "@babel/plugin-proposal-class-properties"
   ],
   "env": {
     "development": {
-      "plugins": ["react-refresh/babel"]
+      "plugins": [
+        ["babel-plugin-styled-components", { "pure": true }],
+        "react-refresh/babel"
+      ]
     }
   }
 }
