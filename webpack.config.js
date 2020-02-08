@@ -30,6 +30,27 @@ const API_HOSTNAME = "http://localhost:3000";
 
 const isProduction = process.argv.includes("--mode=production");
 
+const plugins = [
+  new HtmlWebpackPlugin({
+    title: "Firestarter",
+    template: "./src/index.html",
+    minify: isProduction,
+    globalStyle: minifiedGlobalStyle
+  }),
+  new ForkTsCheckerWebpackPlugin({
+    tsconfig: path.resolve(__dirname, "tsconfig.json"),
+    useTypescriptIncrementalApi: true,
+    checkSyntacticErrors: true,
+    // Required to be async to force compilation to fail due to type checks
+    async: false
+  })
+];
+
+if (!isProduction) {
+  console.log("ReactRefreshWebpackPlugin");
+  plugins.push(new ReactRefreshWebpackPlugin({ disableRefreshCheck: true }));
+}
+
 module.exports = {
   entry: "./src/index.tsx",
   output: {
@@ -91,7 +112,13 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        use: {
+          loader: "babel-loader",
+          options: {
+            envName: isProduction ? "production" : "development",
+            cacheDirectory: true
+          }
+        }
       },
       {
         test: /\.jsx?$/,
@@ -99,28 +126,14 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
+            envName: isProduction ? "production" : "development",
             cacheDirectory: true
           }
         }
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Firestarter",
-      template: "./src/index.html",
-      minify: isProduction,
-      globalStyle: minifiedGlobalStyle
-    }),
-    new ForkTsCheckerWebpackPlugin({
-      tsconfig: path.resolve(__dirname, "tsconfig.json"),
-      useTypescriptIncrementalApi: true,
-      checkSyntacticErrors: true,
-      // Required to be async to force compilation to fail due to type checks
-      async: false
-    }),
-    new ReactRefreshWebpackPlugin({ disableRefreshCheck: true })
-  ],
+  plugins,
   optimization: {
     minimizer: isProduction ? [new TerserPlugin()] : [],
     splitChunks: {
