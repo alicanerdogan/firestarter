@@ -3,6 +3,28 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const { getGlobalStyles } = require("tailwind-in-js");
+const CleanCSS = require("clean-css");
+
+const globalStyle = `
+${getGlobalStyles()}
+* {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  -webkit-tap-highlight-color: transparent;
+}
+html {
+  max-height: 100%;
+}
+* {
+  font-family: "Roboto Condensed", sans-serif;
+}
+`;
+const minifiedGlobalStyle = new CleanCSS({ sourceMap: false }).minify(
+  globalStyle
+).styles;
 
 const API_HOSTNAME = "http://localhost:3000";
 
@@ -29,7 +51,7 @@ module.exports = {
         target: API_HOSTNAME
       }
     },
-    stats: 'minimal'
+    stats: "minimal"
   },
   watchOptions: {
     ignored: /node_modules/
@@ -86,7 +108,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Firestarter",
-      template: "./src/index.html"
+      template: "./src/index.html",
+      minify: isProduction,
+      globalStyle: minifiedGlobalStyle
     }),
     new ForkTsCheckerWebpackPlugin({
       tsconfig: path.resolve(__dirname, "tsconfig.json"),

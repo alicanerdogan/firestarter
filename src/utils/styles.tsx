@@ -1,41 +1,8 @@
-import * as React from "react";
-import styled, { createGlobalStyle, css } from "styled-components";
-import { extendStyled, extendCss, getGlobalStyles } from "tailwind-in-js";
+import styled, { css } from "styled-components";
+import { extendStyled, extendCss } from "tailwind-in-js";
 
 export const twStyled = extendStyled(styled);
 export const twCss = extendCss(css);
-
-// USE DESIRED FONT
-const Global = createGlobalStyle`
-  ${getGlobalStyles()}
- 
-  * {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  html {
-    max-height: 100%;
-  }
-
-  * {
-    font-family: "Roboto Condensed", sans-serif;
-  }
-`;
-
-export const GlobalStyles: React.SFC<{
-  children: React.ReactNode;
-}> = (props: { children: React.ReactNode }) => {
-  return (
-    <React.Fragment>
-      <Global />
-      {props.children}
-    </React.Fragment>
-  );
-};
 
 type CSSArgs = Parameters<typeof css>;
 
