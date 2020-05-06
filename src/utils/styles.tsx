@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import * as types from "styled-components/cssprop";
 import styled, { css } from "styled-components";
 import { extendStyled, extendCss } from "tailwind-in-js";
 
@@ -26,7 +30,7 @@ export const media = {
     @media (max-width: 1200px) {
       ${css(...args)};
     }
-  `
+  `,
 };
 
 export const whereHoverAvailable = (...args: CSSArgs) => css`

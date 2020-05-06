@@ -1,41 +1,6 @@
 import * as React from "react";
-import { twStyled } from "utils/styles";
-import {
-  text_center,
-  py_4,
-  leading_tight,
-  max_w_sm,
-  mx_auto,
-  bg_white,
-  rounded_lg,
-  sm_flex,
-  sm_items_center,
-  px_6,
-  block,
-  sm_mx_0,
-  sm_flex_shrink_0,
-  h_16,
-  sm_h_24,
-  rounded_full,
-  mt_4,
-  sm_mt_0,
-  sm_ml_4,
-  sm_text_left,
-  text_xl,
-  text_sm,
-  text_gray_600,
-  text_purple_500,
-  hover_text_white,
-  hover_bg_purple_500,
-  border,
-  border_purple_500,
-  text_xs,
-  font_semibold,
-  px_4,
-  py_1,
-  leading_normal,
-  shadow_md
-} from "tailwind-in-js";
+import { twStyled, twCss } from "utils/styles";
+import * as tw from "tailwind-in-js";
 
 export interface HelloProps {
   compiler: string;
@@ -43,47 +8,46 @@ export interface HelloProps {
 }
 
 const Card = twStyled.div(
-  max_w_sm,
-  mx_auto,
-  bg_white,
-  shadow_md,
-  rounded_lg,
-  sm_flex,
-  sm_items_center,
-  px_6,
-  py_4
+  tw.max_w_sm,
+  tw.mx_auto,
+  tw.bg_white,
+  tw.shadow_md,
+  tw.rounded_lg,
+  tw.sm_flex,
+  tw.sm_items_center,
+  tw.px_6,
+  tw.py_4
 );
 const Image = twStyled.img(
-  block,
-  mx_auto,
-  sm_mx_0,
-  sm_flex_shrink_0,
-  h_16,
-  sm_h_24,
-  rounded_full
+  tw.block,
+  tw.mx_auto,
+  tw.sm_mx_0,
+  tw.sm_flex_shrink_0,
+  tw.h_16,
+  tw.sm_h_24,
+  tw.rounded_full
 );
 const TextContent = twStyled.div(
-  mt_4,
-  sm_mt_0,
-  sm_ml_4,
-  text_center,
-  sm_text_left
+  tw.mt_4,
+  tw.sm_mt_0,
+  tw.sm_ml_4,
+  tw.text_center,
+  tw.sm_text_left
 );
-const Name = twStyled.p(text_xl, leading_tight);
-const Title = twStyled.p(text_sm, leading_tight, text_gray_600);
+const Title = twStyled.p(tw.text_sm, tw.leading_tight, tw.text_gray_600);
 const Button = twStyled.button(
-  text_purple_500,
-  hover_text_white,
-  hover_bg_purple_500,
-  border,
-  border_purple_500,
-  text_xs,
-  font_semibold,
-  rounded_full,
-  px_4,
-  py_1,
-  leading_normal,
-  mt_4
+  tw.text_purple_500,
+  tw.hover_text_white,
+  tw.hover_bg_purple_500,
+  tw.border,
+  tw.border_purple_500,
+  tw.text_xs,
+  tw.font_semibold,
+  tw.rounded_full,
+  tw.px_4,
+  tw.py_1,
+  tw.leading_normal,
+  tw.mt_4
 );
 
 export class Hello extends React.Component<HelloProps, {}> {
@@ -95,7 +59,7 @@ export class Hello extends React.Component<HelloProps, {}> {
           alt="Profile Picture"
         />
         <TextContent>
-          <Name>{"Erin Linford"}</Name>
+          <p css={twCss(tw.text_xl, tw.leading_tight)}>{"Erin Linford"}</p>
           <Title>{"Customer Support Specialist"}</Title>
           <Button>{"Message"}</Button>
         </TextContent>
