@@ -35,20 +35,20 @@ const plugins = [
     title: "Firestarter",
     template: "./src/index.html",
     minify: isProduction,
-    globalStyle: minifiedGlobalStyle
+    globalStyle: minifiedGlobalStyle,
   }),
   new ForkTsCheckerWebpackPlugin({
     tsconfig: path.resolve(__dirname, "tsconfig.json"),
     useTypescriptIncrementalApi: true,
     checkSyntacticErrors: true,
     // Required to be async to force compilation to fail due to type checks
-    async: false
-  })
+    async: false,
+  }),
 ];
 
 if (!isProduction) {
   console.log("ReactRefreshWebpackPlugin");
-  plugins.push(new ReactRefreshWebpackPlugin({ disableRefreshCheck: true }));
+  plugins.push(new ReactRefreshWebpackPlugin());
 }
 
 module.exports = {
@@ -56,7 +56,7 @@ module.exports = {
   output: {
     filename: isProduction ? "[name].[contenthash].js" : "[name].[hash].js",
     path: __dirname + "/dist",
-    publicPath: "/"
+    publicPath: "/",
   },
   devtool: isProduction ? "source-map" : "cheap-module-source-map",
   devServer: {
@@ -69,17 +69,17 @@ module.exports = {
     clientLogLevel: "none",
     proxy: {
       "/api": {
-        target: API_HOSTNAME
-      }
+        target: API_HOSTNAME,
+      },
     },
-    stats: "minimal"
+    stats: "minimal",
   },
   watchOptions: {
-    ignored: /node_modules/
+    ignored: /node_modules/,
   },
   resolve: {
     modules: ["node_modules", path.resolve(__dirname, "src")],
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
   },
   module: {
     rules: [
@@ -88,15 +88,15 @@ module.exports = {
         test: /\.svg$/,
         use: [
           {
-            loader: "@svgr/webpack"
+            loader: "@svgr/webpack",
           },
           {
             loader: "file-loader",
             options: {
-              name: "[name].[hash].[ext]"
-            }
-          }
-        ]
+              name: "[name].[hash].[ext]",
+            },
+          },
+        ],
       },
       {
         type: "javascript/auto",
@@ -105,9 +105,9 @@ module.exports = {
         use: {
           loader: "file-loader",
           options: {
-            name: "[name].[hash].[ext]"
-          }
-        }
+            name: "[name].[hash].[ext]",
+          },
+        },
       },
       {
         test: /\.tsx?$/,
@@ -116,9 +116,9 @@ module.exports = {
           loader: "babel-loader",
           options: {
             envName: isProduction ? "production" : "development",
-            cacheDirectory: true
-          }
-        }
+            cacheDirectory: true,
+          },
+        },
       },
       {
         test: /\.jsx?$/,
@@ -127,11 +127,11 @@ module.exports = {
           loader: "babel-loader",
           options: {
             envName: isProduction ? "production" : "development",
-            cacheDirectory: true
-          }
-        }
-      }
-    ]
+            cacheDirectory: true,
+          },
+        },
+      },
+    ],
   },
   plugins,
   optimization: {
@@ -142,9 +142,9 @@ module.exports = {
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: "vendors",
-          chunks: "async"
-        }
-      }
-    }
-  }
+          chunks: "async",
+        },
+      },
+    },
+  },
 };
