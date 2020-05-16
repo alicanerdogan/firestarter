@@ -1,6 +1,7 @@
 import * as React from "react";
-import { twStyled, twCss } from "utils/styles";
+import { twStyled } from "utils/styles";
 import * as tw from "tailwind-in-js";
+import { Overlay, Anchor, AnchorPosition } from "./Layout/Overlay";
 
 export interface HelloProps {
   compiler: string;
@@ -10,60 +11,116 @@ export interface HelloProps {
 const Card = twStyled.div(
   tw.max_w_sm,
   tw.mx_auto,
-  tw.bg_white,
-  tw.shadow_md,
   tw.rounded_lg,
-  tw.sm_flex,
-  tw.sm_items_center,
+  tw.flex,
+  tw.justify_between,
   tw.px_6,
-  tw.py_4
+  tw.py_4,
+  tw.mt_16
 );
-const Image = twStyled.img(
+
+const Dot = twStyled.div(
   tw.block,
-  tw.mx_auto,
-  tw.sm_mx_0,
-  tw.sm_flex_shrink_0,
+  tw.w_16,
   tw.h_16,
-  tw.sm_h_24,
-  tw.rounded_full
+  tw.lg_w_32,
+  tw.lg_h_32,
+  tw.relative,
+  tw.rounded_sm,
+  tw.bg_blue_800
 );
-const TextContent = twStyled.div(
-  tw.mt_4,
-  tw.sm_mt_0,
-  tw.sm_ml_4,
-  tw.text_center,
-  tw.sm_text_left
+const DotTip = twStyled.div(
+  tw.block,
+  tw.w_8,
+  tw.h_16,
+  tw.rounded_sm,
+  tw.bg_red_500
 );
-const Title = twStyled.p(tw.text_sm, tw.leading_tight, tw.text_gray_600);
-const Button = twStyled.button(
-  tw.text_purple_500,
-  tw.hover_text_white,
-  tw.hover_bg_purple_500,
-  tw.border,
-  tw.border_purple_500,
-  tw.text_xs,
-  tw.font_semibold,
-  tw.rounded_full,
-  tw.px_4,
-  tw.py_1,
-  tw.leading_normal,
-  tw.mt_4
-);
+
+const AnchorCard = ({
+  hostAnchorPosition,
+  contentAnchorPosition,
+}: {
+  hostAnchorPosition: AnchorPosition;
+  contentAnchorPosition: AnchorPosition;
+}) => {
+  return (
+    <Card>
+      <ul style={{ marginRight: "24px", display: "block" }}>
+        <li>{hostAnchorPosition}</li>
+        <li>{contentAnchorPosition}</li>
+      </ul>
+      <Dot>
+        <Overlay>
+          <Anchor
+            hostAnchorPosition={hostAnchorPosition}
+            contentAnchorPosition={contentAnchorPosition}
+          >
+            <DotTip />
+          </Anchor>
+        </Overlay>
+      </Dot>
+    </Card>
+  );
+};
 
 export class Hello extends React.Component<HelloProps, {}> {
   render() {
     return (
-      <Card>
-        <Image
-          src="https://randomuser.me/api/portraits/women/17.jpg"
-          alt="Profile Picture"
+      <>
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="bottom-left"
         />
-        <TextContent>
-          <p css={twCss(tw.text_xl, tw.leading_tight)}>{"Erin Linford"}</p>
-          <Title>{"Customer Support Specialist"}</Title>
-          <Button>{"Message"}</Button>
-        </TextContent>
-      </Card>
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="bottom-center"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="bottom-right"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="top-left"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="top-center"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="top-right"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="center"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="left-top"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="left-center"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="left-bottom"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="right-top"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="right-center"
+        />
+        <AnchorCard
+          hostAnchorPosition="top-center"
+          contentAnchorPosition="right-bottom"
+        />
+      </>
     );
   }
 }
