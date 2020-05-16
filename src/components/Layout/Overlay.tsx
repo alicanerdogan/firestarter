@@ -133,6 +133,10 @@ export interface AnchorProps {
   hostAnchorPosition: AnchorPosition;
   contentAnchorPosition: AnchorPosition;
   disableTransform?: boolean;
+  UNSTABLE_matchWidth?: boolean;
+  UNSTABLE_matchHeight?: boolean;
+  UNSTABLE_clampWidth?: boolean;
+  UNSTABLE_clampHeight?: boolean;
 }
 
 const AnchorStyle = styled.div`
