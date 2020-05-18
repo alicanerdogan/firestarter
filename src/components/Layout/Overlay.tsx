@@ -137,6 +137,8 @@ export interface AnchorProps {
   UNSTABLE_matchHeight?: boolean;
   UNSTABLE_clampWidth?: boolean;
   UNSTABLE_clampHeight?: boolean;
+  UNSTABLE_offsetX?: string;
+  UNSTABLE_offsetY?: string;
 }
 
 const AnchorStyle = styled.div`
@@ -154,6 +156,10 @@ export const Anchor: React.FC<AnchorProps> = ({
   hostAnchorPosition,
   contentAnchorPosition,
   disableTransform,
+  UNSTABLE_matchWidth,
+  UNSTABLE_matchHeight,
+  UNSTABLE_offsetX,
+  UNSTABLE_offsetY,
 }) => {
   const hostDimensionsStore = useHostDimensions();
   const anchorRef = React.useRef<HTMLDivElement>(null);
@@ -225,7 +231,16 @@ export const Anchor: React.FC<AnchorProps> = ({
   ]);
 
   return (
-    <AnchorStyle ref={anchorRef} style={{ zIndex }}>
+    <AnchorStyle
+      ref={anchorRef}
+      style={{
+        zIndex,
+        width: UNSTABLE_matchWidth ? "100%" : "",
+        height: UNSTABLE_matchHeight ? "100%" : "",
+        left: UNSTABLE_offsetX || "0",
+        top: UNSTABLE_offsetY || "0",
+      }}
+    >
       {children}
     </AnchorStyle>
   );
