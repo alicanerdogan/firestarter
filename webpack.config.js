@@ -3,39 +3,24 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const { getGlobalStyles } = require("tailwind-in-js");
-const CleanCSS = require("clean-css");
-
-const globalStyle = `
-${getGlobalStyles()}
-* {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-
-  -webkit-tap-highlight-color: transparent;
-}
-html {
-  max-height: 100%;
-}
-* {
-  font-family: "Roboto Condensed", sans-serif;
-}
-`;
-const minifiedGlobalStyle = new CleanCSS({ sourceMap: false }).minify(
-  globalStyle
-).styles;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const API_HOSTNAME = "http://localhost:3000";
 
 const isProduction = process.argv.includes("--mode=production");
 
 const plugins = [
+  new MiniCssExtractPlugin({
+    filename: "[name].[contenthash].css",
+    chunkFilename: "[name].[contenthash].css",
+    ignoreOrder: true,
+  }),
   new HtmlWebpackPlugin({
     title: "Firestarter",
-    template: "./src/index.html",
+    template: "./src/index.html.erb",
     minify: isProduction,
-    globalStyle: minifiedGlobalStyle,
+    fontUrl:
+      "https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap",
   }),
   new ForkTsCheckerWebpackPlugin({
     tsconfig: path.resolve(__dirname, "tsconfig.json"),
@@ -47,7 +32,6 @@ const plugins = [
 ];
 
 if (!isProduction) {
-  console.log("ReactRefreshWebpackPlugin");
   plugins.push(new ReactRefreshWebpackPlugin());
 }
 
@@ -83,6 +67,23 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: !isProduction,
+            },
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: false,
+            },
+          },
+        ],
+      },
       {
         type: "javascript/auto",
         test: /\.svg$/,
