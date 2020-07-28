@@ -23,11 +23,11 @@ const plugins = [
       "https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap",
   }),
   new ForkTsCheckerWebpackPlugin({
-    tsconfig: path.resolve(__dirname, "tsconfig.json"),
-    useTypescriptIncrementalApi: true,
-    checkSyntacticErrors: true,
+    typescript: {
+      configFile: path.resolve(__dirname, "tsconfig.json"),
+    },
     // Required to be async to force compilation to fail due to type checks
-    async: false,
+    async: !isProduction,
   }),
 ];
 
