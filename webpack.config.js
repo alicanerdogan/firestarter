@@ -38,7 +38,7 @@ if (!isProduction) {
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    filename: isProduction ? "[name].[contenthash].js" : "[name].[hash].js",
+    filename: "[name].[contenthash].js",
     path: __dirname + "/dist",
     publicPath: "/",
   },
@@ -72,9 +72,7 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: !isProduction,
-            },
+            options: {},
           },
           {
             loader: "css-loader",
@@ -94,7 +92,7 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "[name].[hash].[ext]",
+              name: "[name].[contenthash].[ext]",
             },
           },
         ],
@@ -106,7 +104,7 @@ module.exports = {
         use: {
           loader: "file-loader",
           options: {
-            name: "[name].[hash].[ext]",
+            name: "[name].[contenthash].[ext]",
           },
         },
       },
