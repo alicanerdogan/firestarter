@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -134,7 +135,9 @@ module.exports = {
   },
   plugins,
   optimization: {
-    minimizer: isProduction ? [new TerserPlugin()] : [],
+    minimizer: isProduction
+      ? [new TerserPlugin(), new CssMinimizerPlugin()]
+      : [],
     splitChunks: {
       minChunks: 2,
       cacheGroups: {
