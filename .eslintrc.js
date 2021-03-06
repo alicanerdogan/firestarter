@@ -5,13 +5,7 @@ module.exports = {
     node: true,
   },
   parser: "babel-eslint",
-  extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "prettier",
-    "prettier/@typescript-eslint",
-    "prettier/react",
-  ],
+  extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
   plugins: ["react", "react-hooks", "@typescript-eslint"],
   globals: {
     Atomics: "readonly",
