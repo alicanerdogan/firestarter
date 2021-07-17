@@ -1,37 +1,21 @@
 {
+  "include": ["src"],
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "downlevelIteration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": false,
-    "importHelpers": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": false,
-    "pretty": true,
-    "removeComments": true,
-    "sourceMap": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "target": "ES2015",
     "module": "esnext",
-    "allowJs": true,
-    "noEmit": true,
-    "baseUrl": "src",
-    "outDir": "./dist/",
-    "strictPropertyInitialization": true,
-    "rootDir": "src",
-    "skipLibCheck": true,
-    "lib": ["DOM", "ES2017"],
+    "target": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "rootDir": "./",
     "paths": {
       "@*": ["/*"]
-    }
-  },
-  "include": ["src"]
+    },
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "importsNotUsedAsValues": "error"
+  }
 }

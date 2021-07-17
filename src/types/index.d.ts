@@ -1,5 +1,5 @@
-declare module "*.svg" {
-  import * as React from "react";
+declare module '*.svg' {
+  import * as React from 'react';
 
   export const ReactComponent: React.SFC<React.SVGProps<SVGSVGElement>>;
 
@@ -7,7 +7,17 @@ declare module "*.svg" {
   export default src;
 }
 
-declare module "*.jpg" {
-  const src: string;
-  export default src;
+declare module '*.jpg' {
+  const ref: string;
+  export default ref;
+}
+
+declare module '*.jpeg' {
+  const ref: string;
+  export default ref;
+}
+
+declare module '*.png' {
+  const ref: string;
+  export default ref;
 }

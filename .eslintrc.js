@@ -1,11 +1,15 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true,
+    es2021: true,
     node: true,
   },
-  parser: "babel-eslint",
-  extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   plugins: ["react", "react-hooks", "@typescript-eslint"],
   globals: {
     Atomics: "readonly",
@@ -16,12 +20,12 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
-    sourceType: "module",
+    ecmaVersion: 12,
+    sourceType: 'module',
   },
   settings: {
     react: {
-      version: "detect",
+      version: 'detect',
     },
   },
   rules: {

@@ -1,10 +1,10 @@
-import * as React from "react";
-import { Hello } from "components/Hello";
+import * as React from 'react';
+import { Hello } from 'src/components/Hello';
 
-const App: React.SFC<{}> = () => {
+const App: React.FC = () => {
   return <Hello compiler="TypeScript" framework="React" />;
 };
 
-App.displayName = "App";
+App.displayName = 'App';
 
 export default App;

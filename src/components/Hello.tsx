@@ -1,6 +1,6 @@
-import * as React from "react";
-import styled from "styled-components";
-import { whereHoverAvailable } from "utils/styles";
+import * as React from 'react';
+import styled from 'styled-components';
+import { whereHoverAvailable } from 'src/utils/styles';
 
 export interface HelloProps {
   compiler: string;
@@ -15,4 +15,4 @@ export const Hello: React.FC<HelloProps> = () => {
   return <HelloStyle>{}</HelloStyle>;
 };
 
-Hello.displayName = "Hello";
+Hello.displayName = 'Hello';

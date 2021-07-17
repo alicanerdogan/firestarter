@@ -7,6 +7,16 @@
 
 This is merely a template project to kickstart frontend repos.
 
+## TODO
+
+- svgr
+- react query
+- file loader
+- service worker
+- css minimization
+- source maps
+- Proxy api calls
+
 ## License
 
 [MIT](LICENSE).
