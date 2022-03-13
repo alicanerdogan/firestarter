@@ -46,18 +46,24 @@ module.exports = {
   devtool: isProduction ? "source-map" : "cheap-module-source-map",
   devServer: {
     host: "0.0.0.0",
-    contentBase: "./dist",
     compress: true,
     historyApiFallback: true,
-    overlay: true,
     hot: true,
-    clientLogLevel: "none",
     proxy: {
       "/api": {
         target: API_HOSTNAME,
       },
     },
-    stats: "minimal",
+    devMiddleware: {
+      stats: "minimal",
+    },
+    client: {
+      overlay: true,
+      logging: "none",
+    },
+    static: {
+      directory: "./dist",
+    }
   },
   watchOptions: {
     ignored: /node_modules/,
