@@ -34,7 +34,7 @@
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^7.2.1",
     "html-webpack-plugin": "^5.5.0",
-    "husky": "^4.3.8",
+    "husky": "^7.0.0",
     "lint-staged": "^12.3.5",
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "^2.5.1",
@@ -62,16 +62,11 @@
     "lint:fix": "yarn lint --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\" \"*.config.js\"",
     "format:validate": "prettier --list-different \"{src,tests,webpack,.storybook,config}/**/*.{ts,tsx,js,jsx,json}\" \"*.config.js\"",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "yarn eslint",
     "*.{json,js,jsx,ts,tsx,html}": "yarn prettier --write"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn type-check"
-    }
   }
 }
