@@ -58,7 +58,7 @@
   "scripts": {
     "start": "webpack serve --mode=development --hot",
     "build": "webpack --mode=production",
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" \"*.config.js\" -c .eslintrc.js",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" -c .eslintrc.js",
     "lint:fix": "yarn lint --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\" \"*.config.js\"",
     "format:validate": "prettier --list-different \"{src,tests,webpack,.storybook,config}/**/*.{ts,tsx,js,jsx,json}\" \"*.config.js\"",
