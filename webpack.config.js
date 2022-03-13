@@ -87,6 +87,9 @@ module.exports = {
               sourceMap: false,
             },
           },
+          {
+            loader: "postcss-loader",
+          },
         ],
       },
       {
