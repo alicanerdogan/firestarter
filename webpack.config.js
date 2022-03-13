@@ -63,7 +63,7 @@ module.exports = {
     },
     static: {
       directory: "./dist",
-    }
+    },
   },
   watchOptions: {
     ignored: /node_modules/,
